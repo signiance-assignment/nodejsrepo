@@ -15,3 +15,5 @@ jobs:
     steps:
     - name: running npm command
       run: npm install
+    - name: running nodejsapp
+      run: node index.js
