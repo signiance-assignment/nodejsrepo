@@ -19,5 +19,7 @@ jobs:
       run: git clone https://github.com/signiance-assignment/nodejs-test.git
     - name: running npm command
       run: npm install
+    - name: installing pm2 package
+      run: npm install -g pm2
     - name: running nodejsapp
-      run: node /home/ubuntu/actions-runner/_work/nodejsrepo/nodejsrepo/nodejs-test/index.js
+      run: pm2 start /home/ubuntu/actions-runner/_work/nodejsrepo/nodejsrepo/nodejs-test/index.js --name=nodejs-test
