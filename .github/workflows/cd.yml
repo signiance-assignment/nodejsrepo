@@ -16,6 +16,8 @@ jobs:
       run: sudo rm -rf nodejs-test/
     - name: cloning the github repo
       run: git clone https://github.com/signiance-assignment/nodejs-test.git
+    - name: switching to that directory
+      run: cd nodejs-test
     - name: running npm command
       run: npm install
     - name: installing pm2 package
