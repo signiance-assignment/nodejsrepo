@@ -13,10 +13,10 @@ jobs:
         node-version: [14.x]
 
     steps:
-      - name: get the code
-      - uses: actions/checkout@v3
+      - name: Checkout
+      - uses: actions/checkout@v4
       - name: Use node js
-        uses: actions/steup-node@v1
+      - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
       - name: npm install and build
@@ -26,22 +26,3 @@ jobs:
 
         env:
           CI: true
-
-  deploy:
-    needs: [build]
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: SSH deploy
-        uses: appleboy/ssh-action@master   #3rd party github action
-        with:
-          host: ${{secrets.HOST }}
-          username: ${{secrets.USER }}
-          key: ${{secrets.KEY }}
-          port: ${{secrets.PORT }}
-
-          script:
-            npm install
-            npm run build
-            node index.js
-            
