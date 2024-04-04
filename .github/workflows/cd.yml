@@ -20,6 +20,6 @@ jobs:
     - name: running npm command
       run: npm install
     - name: installing pm2 package
-      run: npm install -g pm2
+      run: sudo npm install -g pm2
     - name: running nodejsapp
       run: pm2 start /home/ubuntu/actions-runner/_work/nodejsrepo/nodejsrepo/nodejs-test/index.js --name=nodejs-test
