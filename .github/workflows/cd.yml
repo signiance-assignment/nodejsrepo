@@ -13,6 +13,8 @@ jobs:
     runs-on: self-hosted
 
     steps:
+    - name: cloning the github repo
+      run: git clone https://github.com/signiance-assignment/nodejs-test.git
     - name: running npm command
       run: npm install
     - name: running nodejsapp
