@@ -13,6 +13,7 @@ jobs:
         node-version: [14.x]
 
     steps:
+      - name: get the code
       - uses: actions/checkout@v3
       - name: Use node js
         uses: actions/steup-node@v1
