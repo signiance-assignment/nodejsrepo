@@ -1,9 +1,9 @@
 name: CD Pipeline
 
-on:
-  workflow_run:
-    workflows: ["Node.js CI"]
-    types:
+#on:
+ # workflow_run:
+  #  workflows: ["Node.js CI"]
+   # types:
       - completed
 
 jobs:
