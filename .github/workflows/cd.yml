@@ -24,3 +24,6 @@ jobs:
           git clone "https://github.com/signiance-assignment/nodejs-test.git"
           cd nodejs-test
           npm install
+          pm2 start index.js --name=nodejs-test
+          pm2 save
+          pm2 startup
