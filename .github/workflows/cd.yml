@@ -26,4 +26,3 @@ jobs:
           npm install
           pm2 start index.js --name=nodejs-test
           pm2 save
-          pm2 startup
