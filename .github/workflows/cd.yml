@@ -22,6 +22,3 @@ jobs:
 
         script:
           git clone "https://github.com/signiance-assignment/nodejs-test.git"
-          cd nodejs-test
-          npm install
-          node index.js
