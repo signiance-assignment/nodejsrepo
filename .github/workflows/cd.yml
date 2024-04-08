@@ -1,22 +1,28 @@
 name: CD Pipeline
 
-#on:
- # workflow_run:
-  #  workflows: ["Node.js CI"]
-   # types:
+on:
+  workflow_run:
+    workflows: ["Node.js CI"]
+    types:
       - completed
 
 jobs:
 
   build:
 
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
-    - name: remove the file if already exist
-      run: sudo rm -rf nodejs-test/
-    - name: cloning the github repo
-      run: git clone https://github.com/signiance-assignment/nodejs-test.git
-    - name: switching to that directory
-      run: cd nodejs-test
-    - name: running npm command
-      run: npm install
+    - name: Deploy to EC2 instance via SSH deploy
+      uses: appleboy/ssh-action@master   #3rd party github action
+      with:
+        host: ${{secrets.HOST }}
+        username: ${{secrets.USER }}
+        key: ${{secrets.KEY }}
+        port: ${{secrets.PORT }}
+
+        script:
+          git clone https://github.com/signiance-assignment/nodejs-test.git
+          npm install
+          npm run build
+          pm2 start index.js --name=nodejs-test
+          pm2 save
