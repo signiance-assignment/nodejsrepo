@@ -22,7 +22,7 @@ jobs:
 
         script: |
           git clone "https://github.com/signiance-assignment/nodejsrepo.git"
-          cd nodejs-test
+          cd nodejsrepo
           npm install
           pm2 stop index.js --name=nodejsrepo
           pm2 start index.js --name=nodejsrepo
